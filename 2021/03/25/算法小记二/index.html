@@ -86,14 +86,15 @@
 <meta property="og:site_name" content="Luobo">
 <meta property="og:description" content="希尔排序概论:  希尔排序是插入排序的一种更高效的改进版本,称之为“缩小增量排序(Diminishing Increment Sort)”，它是非稳定排序算法。 原理过程:  希尔排序是把记录按下标一定增量分组，对每组使用直接插入排序算法排序；随着增量逐渐减少，每组包含的关键词越来越多，当增量减至1时，整个文件恰被分成一组，算法遍终止。 给定实例排序过程图解 假设待排序文件有10个记录，其关键字分">
 <meta property="og:locale">
-<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/2460271-44f063cfdf32c9aa.png?imageMogr2/auto-orient/strip%7CimageView2/2/format/webp">
-<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/2460271-101fb853ac64f43d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1200/format/webp">
+<meta property="og:image" content="http://example.com/2021/03/25/%E7%AE%97%E6%B3%95%E5%B0%8F%E8%AE%B0%E4%BA%8C/sjjg01.png">
+<meta property="og:image" content="http://example.com/2021/03/25/%E7%AE%97%E6%B3%95%E5%B0%8F%E8%AE%B0%E4%BA%8C/sjjg02.png">
+<meta property="og:image" content="http://example.com/2021/03/25/%E7%AE%97%E6%B3%95%E5%B0%8F%E8%AE%B0%E4%BA%8C/sjjg03.png">
 <meta property="article:published_time" content="2021-03-25T07:34:05.000Z">
-<meta property="article:modified_time" content="2021-03-25T09:51:45.202Z">
+<meta property="article:modified_time" content="2021-03-26T01:52:28.280Z">
 <meta property="article:author" content="Luobo-qin">
 <meta property="article:tag" content="排序">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://upload-images.jianshu.io/upload_images/2460271-44f063cfdf32c9aa.png?imageMogr2/auto-orient/strip%7CimageView2/2/format/webp">
+<meta name="twitter:image" content="http://example.com/2021/03/25/%E7%AE%97%E6%B3%95%E5%B0%8F%E8%AE%B0%E4%BA%8C/sjjg01.png">
 
 
 
@@ -337,6 +338,11 @@
           
 
           
+            <span class="post-meta-divider">|</span>
+            <span class="page-pv"><i class="fa fa-file-o"> 阅读量 </i>
+            <span class="busuanzi-value" id="busuanzi_value_page_pv" ></span>
+            </span>
+          
 
           
 
@@ -362,7 +368,8 @@
 <p><strong>给定实例排序过程图解</strong></p>
 <p>假设待排序文件有10个记录，其关键字分别是：<br>49，38，65，97，76，13，27，49，55，04。<br>增量序列的取值依次为：<code>5</code>,<code>2</code>,<code>1</code></p>
 <p>执行效果图如下:</p>
-<p><a href="sjjg01.png">执行效果图</a></p>
+<img src="/2021/03/25/%E7%AE%97%E6%B3%95%E5%B0%8F%E8%AE%B0%E4%BA%8C/sjjg01.png" class="" title="[执行效果图]">
+
 <p><strong>实现代码:</strong></p>
 <figure class="highlight objectivec"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">- (<span class="built_in">NSArray</span> *)shellSort:(<span class="built_in">NSArray</span> *)array &#123;</span><br><span class="line">    </span><br><span class="line">    <span class="built_in">NSMutableArray</span> *unSortArray = [array mutableCopy];</span><br><span class="line">    <span class="keyword">for</span> (<span class="built_in">NSInteger</span> gap = floor(array.count / <span class="number">2</span>) ; gap &gt; <span class="number">0</span> ; gap = floor(gap / <span class="number">2</span> ) ) &#123;</span><br><span class="line">        <span class="keyword">for</span> (<span class="built_in">NSInteger</span> i = gap ; i &lt; array.count ; i ++ ) &#123;</span><br><span class="line">            <span class="keyword">for</span> (<span class="built_in">NSInteger</span> j = i - gap ; j &gt;= <span class="number">0</span> &amp;&amp; [unSortArray[j] integerValue] &gt; [unSortArray[j+gap] integerValue]; j-=gap) &#123;</span><br><span class="line">                [unSortArray exchangeObjectAtIndex:j withObjectAtIndex:(j+gap)];</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> [unSortArray <span class="keyword">copy</span>];</span><br><span class="line">    </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
@@ -404,9 +411,11 @@
 <li>把堆的尺寸缩小 1，并调用 shift_down(0)，目的是把新的数组顶端数据调整到相应位置；</li>
 <li>重复步骤 2，直到堆的尺寸为 1。</li>
 </ol>
-<p><img src="https://upload-images.jianshu.io/upload_images/2460271-44f063cfdf32c9aa.png?imageMogr2/auto-orient/strip%7CimageView2/2/format/webp"></p>
+<img src="/2021/03/25/%E7%AE%97%E6%B3%95%E5%B0%8F%E8%AE%B0%E4%BA%8C/sjjg02.png" class="" title="[过程图解]">
+
 <p>同时，我们对堆中的结点按层进行编号，将这种逻辑结构映射到数组中就是下面这个样子</p>
-<p><img src="https://upload-images.jianshu.io/upload_images/2460271-101fb853ac64f43d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1200/format/webp"></p>
+<img src="/2021/03/25/%E7%AE%97%E6%B3%95%E5%B0%8F%E8%AE%B0%E4%BA%8C/sjjg03.png" class="" title="[]">
+
 <p>该数组从逻辑上讲就是一个堆结构，我们用简单的公式来描述一下堆的定义就是：</p>
 <ul>
 <li>大顶堆：arr[i] &gt;= arr[2i+1] &amp;&amp; arr[i] &gt;= arr[2i+2]</li>
@@ -454,10 +463,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2021/03/25/text/" rel="prev" title="text">
-                text <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -536,9 +541,9 @@
             
               <div class="site-state-item site-state-posts">
               
-                <a href="/archives/%7C%7Carchive">
+                <a href="/archives/">
               
-                  <span class="site-state-item-count">3</span>
+                  <span class="site-state-item-count">2</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -639,6 +644,14 @@
 
 
         
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+
+  
+</div>
+
 
 
 
