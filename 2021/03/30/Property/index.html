@@ -79,15 +79,15 @@
 
 
 
-<meta name="description" content="##@property介绍 相信做过iOS开发的同学都使用过@property，@property翻译过来是属性。在定义一个类时，常常会有多个@property，有了@property，我们可以用来保存类的一些信息或者状态。比如定义一个Student类： 12345678@interface Student : NSObject@property (nonatomic, copy) NSStrin">
+<meta name="description" content="@property介绍相信做过iOS开发的同学都使用过@property，@property翻译过来是属性。在定义一个类时，常常会有多个@property，有了@property，我们可以用来保存类的一些信息或者状态。比如定义一个Student类： 12345678@interface Student : NSObject@property (nonatomic, copy) NSString *">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Property">
 <meta property="og:url" content="http://example.com/2021/03/30/Property/index.html">
 <meta property="og:site_name" content="Luobo">
-<meta property="og:description" content="##@property介绍 相信做过iOS开发的同学都使用过@property，@property翻译过来是属性。在定义一个类时，常常会有多个@property，有了@property，我们可以用来保存类的一些信息或者状态。比如定义一个Student类： 12345678@interface Student : NSObject@property (nonatomic, copy) NSStrin">
+<meta property="og:description" content="@property介绍相信做过iOS开发的同学都使用过@property，@property翻译过来是属性。在定义一个类时，常常会有多个@property，有了@property，我们可以用来保存类的一些信息或者状态。比如定义一个Student类： 12345678@interface Student : NSObject@property (nonatomic, copy) NSString *">
 <meta property="og:locale">
 <meta property="article:published_time" content="2021-03-30T01:19:20.000Z">
-<meta property="article:modified_time" content="2021-03-30T02:05:18.941Z">
+<meta property="article:modified_time" content="2021-03-30T02:20:46.624Z">
 <meta property="article:author" content="Luobo-qin">
 <meta property="article:tag" content="property">
 <meta name="twitter:card" content="summary">
@@ -357,8 +357,7 @@
       
 
       
-        <p>##@property介绍</p>
-<p>相信做过iOS开发的同学都使用过<code>@property</code>，<code>@property</code>翻译过来是属性。在定义一个类时，常常会有多个<code>@property</code>，有了<code>@property</code>，我们可以用来保存类的一些信息或者状态。比如定义一个Student类：</p>
+        <h2 id="property介绍"><a href="#property介绍" class="headerlink" title="@property介绍"></a>@property介绍</h2><p>相信做过iOS开发的同学都使用过<code>@property</code>，<code>@property</code>翻译过来是属性。在定义一个类时，常常会有多个<code>@property</code>，有了<code>@property</code>，我们可以用来保存类的一些信息或者状态。比如定义一个Student类：</p>
 <figure class="highlight objectivec"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">@interface</span> <span class="title">Student</span> : <span class="title">NSObject</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">@property</span> (<span class="keyword">nonatomic</span>, <span class="keyword">copy</span>) <span class="built_in">NSString</span> *name;</span><br><span class="line"></span><br><span class="line"><span class="keyword">@property</span> (<span class="keyword">nonatomic</span>, <span class="keyword">copy</span>) <span class="built_in">NSString</span> *sex;</span><br><span class="line"></span><br><span class="line"><span class="keyword">@end</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
 
 <p>Student类中有两个属性，分别是<code>name</code>和<code>sex</code>。</p>
@@ -366,14 +365,12 @@
 <figure class="highlight objectivec"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">self</span>.name = <span class="string">@&quot;xxx&quot;</span>;</span><br><span class="line"><span class="keyword">self</span>.sex = <span class="string">@&quot;xxx&quot;</span>;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 
 <p>那么，为什么可以这样用呢？<code>self.name</code>是<code>self</code>的<code>name</code>变量嘛？还是其他的什么？属性中的<code>copy</code>代表什么？<code>nonatomic</code>呢？下面来看一下这些问题的答案。</p>
-<p>##@property 本质</p>
-<p><code>@property</code>到底是什么呢？实际上<code>@property</code> = 实例变量 + get方法 + set方法。也就是说属性</p>
+<h2 id="property-本质"><a href="#property-本质" class="headerlink" title="@property 本质"></a>@property 本质</h2><p><code>@property</code>到底是什么呢？实际上<code>@property</code> = 实例变量 + get方法 + set方法。也就是说属性</p>
 <figure class="highlight objectivec"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">@property</span> (<span class="keyword">nonatomic</span>, <span class="keyword">copy</span>) <span class="built_in">NSString</span> *name;</span><br></pre></td></tr></table></figure>
 
 <p>代表的有实例变量，get方法和set方法。如果大家用过Java，相信对set方法和get方法应该很熟悉，这里的set、get方法和Java里面的作用是一样的，get方法用来获取变量的值，set方法用来设置变量的值。使用@property生成的实例变量、get方法、set方法的命名有严格的规范，实例变量的名称、get方法名、set方法名稍后再介绍。</p>
 <p>这里需要注意的是，包括实例变量、get方法和set方法，不会真的出现在我们的编辑器里面，使用属性生成的实例变量、get方法、set方法是在编译过程中生成的。下面介绍一下set方法、get方法以及自动生成的实例变量。</p>
-<p>###setter方法</p>
-<p>set方法也可以称为setter方法，之后看到setter方法直接理解成set方法即可。同理，get方法也被称为getter方法。</p>
+<h3 id="setter方法"><a href="#setter方法" class="headerlink" title="setter方法"></a>setter方法</h3><p>set方法也可以称为setter方法，之后看到setter方法直接理解成set方法即可。同理，get方法也被称为getter方法。</p>
 <p>还是以上面的属性：</p>
 <figure class="highlight objectivec"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">@property</span> (<span class="keyword">nonatomic</span>, <span class="keyword">copy</span>) <span class="built_in">NSString</span> *name;</span><br></pre></td></tr></table></figure>
 
@@ -387,8 +384,7 @@
 <figure class="highlight objectivec"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">- (<span class="keyword">void</span>)setName:(<span class="built_in">NSString</span> *)name</span><br><span class="line">&#123;</span><br><span class="line">    <span class="built_in">NSLog</span>(<span class="string">@&quot;rewrite setter&quot;</span>);</span><br><span class="line">    _name = name;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <p>关于_name是什么，后续会介绍。</p>
-<p>####getter方法</p>
-<p>以属性</p>
+<h4 id="getter方法"><a href="#getter方法" class="headerlink" title="getter方法"></a>getter方法</h4><p>以属性</p>
 <figure class="highlight objectivec"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">@property</span> (<span class="keyword">nonatomic</span>, <span class="keyword">copy</span>) <span class="built_in">NSString</span> *name;</span><br></pre></td></tr></table></figure>
 
 <p>为例，编译器自动生成的getter方法是</p>
@@ -404,13 +400,10 @@
 <figure class="highlight objectivec"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Use of undeclared identifier <span class="string">&#x27;_name&#x27;</span>; did you mean <span class="string">&#x27;name&#x27;</span>?</span><br></pre></td></tr></table></figure>
 
 <p>稍后我们再解释为何会有该错误，以及如何解决。先来看一下_name到底是什么。</p>
-<p>####实例变量</p>
-<p>既然@property = 实例变量 + getter + setter，那么属性所生成的实例变量名是什么呢？根据上面的例子，也很容易猜到，项目中也经常使用，实例变量的名称就是_name。实例变量的命名也是有固定格式的，下划线+属性名。如果属性是@property firstName，那么生成的实例变量就是_firstName。这也是为何我们在setter方法和getter方法，以及其他的方法中可以使用_name的原因。</p>
+<h4 id="实例变量"><a href="#实例变量" class="headerlink" title="实例变量"></a>实例变量</h4><p>既然@property = 实例变量 + getter + setter，那么属性所生成的实例变量名是什么呢？根据上面的例子，也很容易猜到，项目中也经常使用，实例变量的名称就是_name。实例变量的命名也是有固定格式的，下划线+属性名。如果属性是@property firstName，那么生成的实例变量就是_firstName。这也是为何我们在setter方法和getter方法，以及其他的方法中可以使用_name的原因。</p>
 <p>这里再提一下，无论是实例变量，还是setter、getter方法，命名都是有严格规范的。正是因为有了这种规范，编译器才能够自动生成方法，这也要求我们在项目中，对变量的命名，方法的命名遵循一定的规范。</p>
-<p>####自动合成</p>
-<p>定义一个@property，在编译期间，编译器会生成实例变量、getter方法、setter方法，这些方法、变量是通过自动合成（autosynthesize）的方式生成并添加到类中。实际上，一个类经过编译后，会生成变量列表ivar_list，方法列表method_list，每添加一个属性，在变量列表ivar_list会添加对应的变量，如_name，方法列表method_list中会添加对应的setter方法和getter方法。</p>
-<p>####动态合成</p>
-<p>既然有自动合成，那么相对应的就要有非自动合成，非自动合成又称为动态合成。定义一个属性，默认是自动合成的，默认会生成getter方法和setter方法，这也是为何我们可以直接使用self.属性名的原因。实际上，自动合成对应的代码是：</p>
+<h4 id="自动合成"><a href="#自动合成" class="headerlink" title="自动合成"></a>自动合成</h4><p>定义一个@property，在编译期间，编译器会生成实例变量、getter方法、setter方法，这些方法、变量是通过自动合成（autosynthesize）的方式生成并添加到类中。实际上，一个类经过编译后，会生成变量列表ivar_list，方法列表method_list，每添加一个属性，在变量列表ivar_list会添加对应的变量，如_name，方法列表method_list中会添加对应的setter方法和getter方法。</p>
+<h4 id="动态合成"><a href="#动态合成" class="headerlink" title="动态合成"></a>动态合成</h4><p>既然有自动合成，那么相对应的就要有非自动合成，非自动合成又称为动态合成。定义一个属性，默认是自动合成的，默认会生成getter方法和setter方法，这也是为何我们可以直接使用self.属性名的原因。实际上，自动合成对应的代码是：</p>
 <figure class="highlight objectivec"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">@synthesize</span> name = _name;</span><br></pre></td></tr></table></figure>
 
 <p>这行代码是编译器自动生成的，无需我们来写。相应的，如果我们想要动态合成，需要自己写如下代码：</p>
@@ -430,8 +423,7 @@
 <figure class="highlight objectivec"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">@interface</span> <span class="title">Student</span> : <span class="title">NSObject</span></span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="built_in">NSString</span> *_sex;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">@property</span> (<span class="keyword">nonatomic</span>, <span class="keyword">copy</span>) <span class="built_in">NSString</span> *name;</span><br><span class="line"></span><br><span class="line"><span class="keyword">@property</span> (<span class="keyword">nonatomic</span>, <span class="keyword">copy</span>) <span class="built_in">NSString</span> *sex;</span><br><span class="line"></span><br><span class="line"><span class="keyword">@end</span></span><br></pre></td></tr></table></figure>
 
 <p>现在再编译，运行，执行没有错误和崩溃。</p>
-<p>####重写setter、getter方法的注意事项</p>
-<p>上面的例子中，重写了属性name的getter方法和setter方法，如下：</p>
+<h4 id="重写setter、getter方法的注意事项"><a href="#重写setter、getter方法的注意事项" class="headerlink" title="重写setter、getter方法的注意事项"></a>重写setter、getter方法的注意事项</h4><p>上面的例子中，重写了属性name的getter方法和setter方法，如下：</p>
 <figure class="highlight objectivec"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">- (<span class="keyword">void</span>)setName:(<span class="built_in">NSString</span> *)name</span><br><span class="line">&#123;</span><br><span class="line">    <span class="built_in">NSLog</span>(<span class="string">@&quot;rewrite setter&quot;</span>);</span><br><span class="line">    _name = name;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">- (<span class="built_in">NSString</span> *)name</span><br><span class="line">&#123;</span><br><span class="line">    <span class="built_in">NSLog</span>(<span class="string">@&quot;rewrite getter&quot;</span>);</span><br><span class="line">    <span class="keyword">return</span> _name;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 
 <p>但是编译器会提示错误，错误信息如下：</p>
@@ -442,8 +434,7 @@
 <figure class="highlight objectivec"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">@synthesize</span> name = _name;</span><br></pre></td></tr></table></figure>
 
 <p>这样就没问题了。如果一个属性是只读的，重写了其getter方法时，编译器也会认为该属性是@dynamic，关于可读写、只读，下面会介绍。这里提醒一下，当项目中重写了属性的getter方法和setter方法时，注意下是否有编译的问题。</p>
-<p>####修改实例变量的名称</p>
-<p>使用自动合成时，针对</p>
+<h4 id="修改实例变量的名称"><a href="#修改实例变量的名称" class="headerlink" title="修改实例变量的名称"></a>修改实例变量的名称</h4><p>使用自动合成时，针对</p>
 <figure class="highlight objectivec"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">@property</span> (<span class="keyword">nonatomic</span>, <span class="keyword">copy</span>) <span class="built_in">NSString</span> *name;</span><br></pre></td></tr></table></figure>
 
 <p>属性，生成的变量名是_name。倘若，不习惯使用下划线开头的变量名，能否指定属性对应的变量名呢？答案是可以的，使用的是上面介绍过的@synthesize关键字。如下：</p>
@@ -453,16 +444,14 @@
 <figure class="highlight objectivec"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">- (<span class="keyword">void</span>)setName:(<span class="built_in">NSString</span> *)name</span><br><span class="line">&#123;</span><br><span class="line">    <span class="built_in">NSLog</span>(<span class="string">@&quot;rewrite setter&quot;</span>);</span><br><span class="line">    stuName = name;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">- (<span class="built_in">NSString</span> *)name</span><br><span class="line">&#123;</span><br><span class="line">    <span class="built_in">NSLog</span>(<span class="string">@&quot;rewrite getter&quot;</span>);</span><br><span class="line">    <span class="keyword">return</span> stuName;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 
 <p>注意：<strong>虽然可以使用@synthesize关键字修改变量名，但是如无特殊需求，不建议这样做。</strong> 因为默认情况下编译器已经为我们生成了变量名，大多数的项目、开发者也都会遵循这样的规范，既然苹果已经定义了一个好的规范，为什么不遵守呢？</p>
-<p>####getter方法中为何不能用self.</p>
-<p>有经验的开发者应该都知道这一点，在getter方法中是不能使用self.的，比如：</p>
+<h4 id="getter方法中为何不能用self"><a href="#getter方法中为何不能用self" class="headerlink" title="getter方法中为何不能用self."></a>getter方法中为何不能用self.</h4><p>有经验的开发者应该都知道这一点，在getter方法中是不能使用self.的，比如：</p>
 <figure class="highlight objectivec"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">- (<span class="built_in">NSString</span> *)name</span><br><span class="line">&#123;</span><br><span class="line">    <span class="built_in">NSLog</span>(<span class="string">@&quot;rewrite getter&quot;</span>);</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">self</span>.name;  <span class="comment">// 错误的写法，会造成死循环</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <p>原因代码注释中已经写了，这样会造成死循环。这里需要注意的是：self.name实际上就是执行了属性name的getter方法，getter方法中又调用了self.name， 会一直递归调用，直到程序崩溃。通常程序中使用：</p>
 <figure class="highlight objectivec"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">self</span>.name = <span class="string">@&quot;aaa&quot;</span>;</span><br></pre></td></tr></table></figure>
 
 <p>这样的方式，setter方法会被调用。</p>
-<p>##@property修饰符</p>
-<p>当我们定义一个字符串属性时，通常我们会这样写：</p>
+<h2 id="property修饰符"><a href="#property修饰符" class="headerlink" title="@property修饰符"></a>@property修饰符</h2><p>当我们定义一个字符串属性时，通常我们会这样写：</p>
 <figure class="highlight objectivec"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">@property</span> (<span class="keyword">nonatomic</span>, <span class="keyword">copy</span>) <span class="built_in">NSString</span> *name;</span><br></pre></td></tr></table></figure>
 
 <p>复制代码当我们定义一个NSMutableArray类型的属性时，通常我们会这样写：</p>
@@ -472,8 +461,7 @@
 <figure class="highlight objectivec"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">@property</span> (<span class="keyword">nonatomic</span>, <span class="keyword">assign</span>) <span class="keyword">int</span> age;</span><br></pre></td></tr></table></figure>
 
 <p>复制代码定义一个属性时，nonatomic、copy、strong、assign等被称作是关键字，或者是修饰符。</p>
-<p>####修饰符种类</p>
-<p>修饰符有四种：</p>
+<h4 id="修饰符种类"><a href="#修饰符种类" class="headerlink" title="修饰符种类"></a>修饰符种类</h4><p>修饰符有四种：</p>
 <ol>
 <li><p>原子性。原子性有nonatomic、atomic两个值，如果不写nonatomic,那么默认是atomic的。如果属性是atomic的，那么在访问其getter和setter方法之前，会有一些判断，大概是判断是否可以访问等，这里系统使用的是自旋锁。由于使用atomic并不能绝对保证线程安全，且会耗费一些性能，因此通常情况下都使用nonatomic。</p>
 </li>
@@ -490,15 +478,13 @@
 <figure class="highlight objectivec"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">- (<span class="built_in">BOOL</span>)isPass;</span><br></pre></td></tr></table></figure>
 
 
-<p>####默认修饰符</p>
-<p>声明属性时，如果不显示指定修饰符，那么默认的修饰符是哪些呢？或者说未指定的修饰符，默认取值是什么呢？如果是基本数据类型，默认取值是：</p>
+<h4 id="默认修饰符"><a href="#默认修饰符" class="headerlink" title="默认修饰符"></a>默认修饰符</h4><p>声明属性时，如果不显示指定修饰符，那么默认的修饰符是哪些呢？或者说未指定的修饰符，默认取值是什么呢？如果是基本数据类型，默认取值是：</p>
 <figure class="highlight objectivec"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">atomic,<span class="keyword">readwrite</span>,<span class="keyword">assign</span></span><br></pre></td></tr></table></figure>
 
 <p>如果是Objective-C对象，默认取值是：</p>
 <figure class="highlight objectivec"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">atomic,<span class="keyword">readwrite</span>,<span class="keyword">strong</span></span><br></pre></td></tr></table></figure>
 
-<p>####atomic是否是线程安全的</p>
-<p>上面提到了，声明属性时，通常使用nonatomic修饰符，原因就是因为atomic并不能保证绝对的线程安全。举例来说，假设有一个线程A在不断的读取属性name的值，同时有一个线程B修改了属性name的值，那么即使属性name是atomic，线程A读到的仍旧是修改后的值，可见不是线程安全的。如果想要实现线程安全，需要手动的实现锁。下面是一段示例代码：</p>
+<h4 id="atomic是否是线程安全的"><a href="#atomic是否是线程安全的" class="headerlink" title="atomic是否是线程安全的"></a>atomic是否是线程安全的</h4><p>上面提到了，声明属性时，通常使用nonatomic修饰符，原因就是因为atomic并不能保证绝对的线程安全,只是能保证数据的完整性.这个完整性体现在：使用者总能取到完整的值。举例来说，假设有一个线程A在不断的读取属性name的值，同时有一个线程B修改了属性name的值，那么即使属性name是atomic，线程A读到的仍旧是修改后的值，可见不是线程安全的。如果想要实现线程安全，需要手动的实现锁。下面是一段示例代码：</p>
 <p>声明name属性，使用atomic修饰符</p>
 <figure class="highlight objectivec"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">@property</span> (atomic, <span class="keyword">copy</span>) <span class="built_in">NSString</span> *name;</span><br></pre></td></tr></table></figure>
 
@@ -509,19 +495,17 @@
 <figure class="highlight objectivec"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">2018</span><span class="number">-12</span><span class="number">-06</span> <span class="number">15</span>:<span class="number">42</span>:<span class="number">26.837215</span>+<span class="number">0800</span> TestClock[<span class="number">15405</span>:<span class="number">175815</span>] stu.name = aaa</span><br><span class="line"><span class="number">2018</span><span class="number">-12</span><span class="number">-06</span> <span class="number">15</span>:<span class="number">42</span>:<span class="number">26.837837</span>+<span class="number">0800</span> TestClock[<span class="number">15405</span>:<span class="number">175815</span>] stu.name = bbb</span><br></pre></td></tr></table></figure>
 
 <p>证实了即使使用了atomic,也不能保证线程安全。</p>
-<p>####weak和assign区别</p>
-<p>经常会有面试题问weak和assign的区别，这里介绍一下。</p>
+<p>UIKIT不需要使用atomic：因为UIKIT是在主线程做的，不存在线程安全问题。</p>
+<h4 id="weak和assign区别"><a href="#weak和assign区别" class="headerlink" title="weak和assign区别"></a>weak和assign区别</h4><p>经常会有面试题问weak和assign的区别，这里介绍一下。</p>
 <p>weak和strong是对应的，一个是强引用，一个是弱引用。weak和assign的区别主要是体现在两者修饰OC对象时的差异。上面也介绍过，assign通常用来修饰基本数据类型，如int、float、BOOL等，weak用来修饰OC对象，如UIButton、UIView等。</p>
-<p>#####基本数据类型用weak来修饰</p>
-<p>假设声明一个int类型的属性，但是用weak来修饰，会发生什么呢？</p>
+<h5 id="基本数据类型用weak来修饰"><a href="#基本数据类型用weak来修饰" class="headerlink" title="基本数据类型用weak来修饰"></a>基本数据类型用weak来修饰</h5><p>假设声明一个int类型的属性，但是用weak来修饰，会发生什么呢？</p>
 <figure class="highlight objectivec"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">@property</span> (<span class="keyword">nonatomic</span>, <span class="keyword">weak</span>) <span class="keyword">int</span> age;</span><br></pre></td></tr></table></figure>
 
 <p>Xcode会直接提示错误，错误信息如下：</p>
 <figure class="highlight objectivec"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Property with <span class="string">&#x27;weak&#x27;</span> attribute must be of object type</span><br></pre></td></tr></table></figure>
 
 <p>也就是说，weak只能用来修饰对象，不能用来修饰基本数据类型，否则会发生编译错误。</p>
-<p>#####对象使用assign来修饰</p>
-<p>假设声明一个UIButton类型的属性，但是用assign来修饰，会发生什么呢？</p>
+<h5 id="对象使用assign来修饰"><a href="#对象使用assign来修饰" class="headerlink" title="对象使用assign来修饰"></a>对象使用assign来修饰</h5><p>假设声明一个UIButton类型的属性，但是用assign来修饰，会发生什么呢？</p>
 <figure class="highlight objectivec"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">@property</span> (<span class="keyword">nonatomic</span>, <span class="keyword">assign</span>) <span class="built_in">UIButton</span> *assignBtn;</span><br></pre></td></tr></table></figure>
 
 <p>编译，没有问题，运行也没有问题。我们再声明一个UIButton,使用weak来修饰，对比一下：</p>
@@ -546,28 +530,21 @@
 <p>而向nil发送消息是没有问题的，不会崩溃。</p>
 <p>assign修饰的对象，当对象释放之后，即引用计数为0时，对象会变为野指针，不知道指向哪，再向该对象发消息，非常容易崩溃。</p>
 <p>因此，当属性类型是对象时，不要使用assign，会带来一些风险。</p>
-<p>####堆和栈</p>
-<p>上面说到，属性用assign修饰，当被释放后，容易变为野指针，容易带来崩溃问题，那么，为何基本数据类型可以用assign来修饰呢？这就涉及到堆和栈的问题。</p>
+<h4 id="堆和栈"><a href="#堆和栈" class="headerlink" title="堆和栈"></a>堆和栈</h4><p>上面说到，属性用assign修饰，当被释放后，容易变为野指针，容易带来崩溃问题，那么，为何基本数据类型可以用assign来修饰呢？这就涉及到堆和栈的问题。</p>
 <p>相对来说，堆的空间大，通常是不连续的结构，使用链表结构。使用堆中的空间，需要开发者自己去释放。OC中的对象，如 UIButton 、UILabel ，[[UIButton alloc] init] 出来的，都是分配在堆空间上。</p>
 <p>栈的空间小，约1M左右，是一段连续的结构。栈中的空间，开发者不需要管，系统会帮忙处理。iOS开发 中 int、float等变量分配内存时是在栈上。如果栈空间使用完，会发生栈溢出的错误。</p>
 <p>由于堆、栈结构的差异，栈和堆分配空间时的寻址方式也是不一样的。因为栈是连续的控件，所以栈在分配空间时，会直接在未使用的空间中分配一段出来，供程序使用；如果剩下的空间不够大，直接栈溢出；堆是不连续的，堆寻找合适空间时，是顺着链表结点来寻找，找到第一块足够大的空间时，分配空间，返回。根据两者的数据结构，可以推断，堆空间上是存在碎片的。</p>
 <p>回到问题，为何assign修饰基本数据类型没有野指针的问题？因为这些基本数据类型是分配在栈上，栈上空间的分配和回收都是系统来处理的，因此开发者无需关注，也就不会产生野指针的问题。</p>
-<p>####栈是线程安全的嘛</p>
-<p>扩展一下，栈是线程安全的嘛？回答问题之前，先看一下进程和线程的关系。</p>
-<p>#####进程和线程的关系</p>
-<p>线程是进程的一个实体，是CPU调度和分派的基本单位。一个进程可以拥有多个线程。线程本身是不配拥有系统资源的，只拥有很少的，运行中必不可少的资源（如程序计数器、寄存器、栈）。但是线程可以与同属于一个进程的其他线程，共享进程所拥有的资源。一个进程中所有的线程共享该进程的地址空间，但是每个线程有自己独立的栈，iOS系统中，每个线程栈的大小是1M。而堆则不同。堆是进程所独有的，通常一个进程有一个堆，这个堆为本进程中的所有线程所共享。</p>
-<p>#####栈的线程安全</p>
-<p>其实通过上面的介绍，该问题答案已经很明显了：栈是线程安全的。</p>
+<h4 id="栈是线程安全的嘛"><a href="#栈是线程安全的嘛" class="headerlink" title="栈是线程安全的嘛"></a>栈是线程安全的嘛</h4><p>扩展一下，栈是线程安全的嘛？回答问题之前，先看一下进程和线程的关系。</p>
+<h5 id="进程和线程的关系"><a href="#进程和线程的关系" class="headerlink" title="进程和线程的关系"></a>进程和线程的关系</h5><p>线程是进程的一个实体，是CPU调度和分派的基本单位。一个进程可以拥有多个线程。线程本身是不配拥有系统资源的，只拥有很少的，运行中必不可少的资源（如程序计数器、寄存器、栈）。但是线程可以与同属于一个进程的其他线程，共享进程所拥有的资源。一个进程中所有的线程共享该进程的地址空间，但是每个线程有自己独立的栈，iOS系统中，每个线程栈的大小是1M。而堆则不同。堆是进程所独有的，通常一个进程有一个堆，这个堆为本进程中的所有线程所共享。</p>
+<h5 id="栈的线程安全"><a href="#栈的线程安全" class="headerlink" title="栈的线程安全"></a>栈的线程安全</h5><p>其实通过上面的介绍，该问题答案已经很明显了：栈是线程安全的。</p>
 <p>堆是多个线程所共有的空间，操作系统在对进程进行初始化的时候，会对堆进行分配；<br>栈是每个线程所独有的，保存线程的运行状态和局部变量。栈在线程开始的时化，每个线程的栈是互相独立的，因此栈是线程安全的。</p>
-<p>####copy、strong、mutableCopy</p>
-<p>属性修饰符中，还有一个经常被问到的面试题是copy和strong。什么时候用copy，为什么？什么时候用strong,为什么？以及mutableCopy又是什么？这一节介绍一下这些内容。</p>
-<p>#####copy和strong</p>
-<p>首先看一下copy和strong，copy和strong的区别也是面试中出现频率最高的。之前举得例子中其实已经出现了copy和strong：</p>
+<h4 id="copy、strong、mutableCopy"><a href="#copy、strong、mutableCopy" class="headerlink" title="copy、strong、mutableCopy"></a>copy、strong、mutableCopy</h4><p>属性修饰符中，还有一个经常被问到的面试题是copy和strong。什么时候用copy，为什么？什么时候用strong,为什么？以及mutableCopy又是什么？这一节介绍一下这些内容。</p>
+<h5 id="copy和strong"><a href="#copy和strong" class="headerlink" title="copy和strong"></a>copy和strong</h5><p>首先看一下copy和strong，copy和strong的区别也是面试中出现频率最高的。之前举得例子中其实已经出现了copy和strong：</p>
 <figure class="highlight objectivec"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">@property</span> (<span class="keyword">nonatomic</span>, <span class="keyword">copy</span>) <span class="built_in">NSString</span> *sex;</span><br><span class="line"></span><br><span class="line"><span class="keyword">@property</span> (<span class="keyword">nonatomic</span>, <span class="keyword">strong</span>) <span class="built_in">NSMutableArray</span> *books;</span><br></pre></td></tr></table></figure>
 
 <p>通常情况下，<strong>不可变对象属性修饰符使用<code>copy</code>，可变对象属性修饰符使用<code>strong</code>。</strong></p>
-<p>#####可变对象和不可变对象</p>
-<p>Objective-C中存在可变对象和不可变对象的概念。像NSArray、NSDictionary、NSString这些都是不可变对象，像NSMutableArray、NSMutableDictionary、NSMutableString这些是可变对象。可变对象和不可变对象的区别是，不可变对象的值一旦确定就不能再修改。下面看个例子来说明。</p>
+<h5 id="可变对象和不可变对象"><a href="#可变对象和不可变对象" class="headerlink" title="可变对象和不可变对象"></a>可变对象和不可变对象</h5><p>Objective-C中存在可变对象和不可变对象的概念。像NSArray、NSDictionary、NSString这些都是不可变对象，像NSMutableArray、NSMutableDictionary、NSMutableString这些是可变对象。可变对象和不可变对象的区别是，不可变对象的值一旦确定就不能再修改。下面看个例子来说明。</p>
 <figure class="highlight objectivec"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">- (<span class="keyword">void</span>)testNotChange</span><br><span class="line">&#123;</span><br><span class="line">    <span class="built_in">NSString</span> *str = <span class="string">@&quot;123&quot;</span>;</span><br><span class="line">    <span class="built_in">NSLog</span>(<span class="string">@&quot;str = %p&quot;</span>,str);</span><br><span class="line">    str = <span class="string">@&quot;234&quot;</span>;</span><br><span class="line">    <span class="built_in">NSLog</span>(<span class="string">@&quot;after str = %p&quot;</span>,str);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <p>NSString是不可变对象。虽然在程序中修改了str的值，但是此处的修改实际上是系统重新分配了空间，定义了字符串，然后str重新指向了一个新的地址。这也是为何修改之后地址不一致的原因</p>
@@ -579,8 +556,7 @@
 <p>NSMutableString是可变对象。程序中改变了mutStr的值，且修改前后mutStr的地址一致：</p>
 <figure class="highlight objectivec"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">2018</span><span class="number">-12</span><span class="number">-06</span> <span class="number">22</span>:<span class="number">10</span>:<span class="number">08.457179</span>+<span class="number">0800</span> TestClock[<span class="number">1000</span>:<span class="number">21900</span>] mutStr = <span class="number">0x600002100540</span></span><br><span class="line"><span class="number">2018</span><span class="number">-12</span><span class="number">-06</span> <span class="number">22</span>:<span class="number">10</span>:<span class="number">08.457261</span>+<span class="number">0800</span> TestClock[<span class="number">1000</span>:<span class="number">21900</span>] after mutStr = <span class="number">0x600002100540</span></span><br></pre></td></tr></table></figure>
 
-<p>#####不可变对象用strong</p>
-<p>上面说了，可变对象使用strong，不可变对象使用copy。那么，如果不可变对象使用strong来修饰，会有什么问题呢？写代码测试一下：</p>
+<h5 id="不可变对象用strong"><a href="#不可变对象用strong" class="headerlink" title="不可变对象用strong"></a>不可变对象用strong</h5><p>上面说了，可变对象使用strong，不可变对象使用copy。那么，如果不可变对象使用strong来修饰，会有什么问题呢？写代码测试一下：</p>
 <figure class="highlight objectivec"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">@property</span> (<span class="keyword">nonatomic</span>, <span class="keyword">strong</span>) <span class="built_in">NSString</span> *strongStr;</span><br></pre></td></tr></table></figure>
 
 <p>首先明确一点，既然类型是NSString，那么则代表我们不希望testStr被改变，否则直接使用可变对象NSMutableString就可以了。另外需要提醒的一点是，NSMutableString是NSString的子类，对继承了解的应该都知道，子类是可以用来初始化父类的。</p>
@@ -588,8 +564,7 @@
 <figure class="highlight objectivec"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">- (<span class="keyword">void</span>)testStrongStr</span><br><span class="line">&#123;</span><br><span class="line">    <span class="built_in">NSString</span> *tempStr = <span class="string">@&quot;123&quot;</span>;</span><br><span class="line">    <span class="built_in">NSMutableString</span> *mutString = [<span class="built_in">NSMutableString</span> stringWithString:tempStr];</span><br><span class="line">    <span class="keyword">self</span>.strongStr = mutString;  <span class="comment">// 子类初始化父类</span></span><br><span class="line">    <span class="built_in">NSLog</span>(<span class="string">@&quot;self str = %p  mutStr = %p&quot;</span>,<span class="keyword">self</span>.strongStr,mutString);   <span class="comment">// 两者指向的地址是一样的</span></span><br><span class="line">    [mutString insertString:<span class="string">@&quot;456&quot;</span> atIndex:<span class="number">0</span>];</span><br><span class="line">    <span class="built_in">NSLog</span>(<span class="string">@&quot;self str = %@  mutStr = %@&quot;</span>,<span class="keyword">self</span>.strongStr,mutString);  <span class="comment">// 两者的值都会改变,不可变对象的值被改变</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <p>注意：<strong>我们定义的不可变对象strongStr，在开发者无感知的情况下被篡改了.</strong> 所谓无感知，是因为开发者没有显示的修改strongStr的值，而是再修改其他变量的值时，strongStr被意外的改变。这显然不是我们想得到的，而且也是危险的。项目中出现类似的bug时，通常都很难定位。这就是不可变对象使用strong修饰所带来的风险。</p>
-<p>#####可变对象用copy</p>
-<p>上面说了不可变对象使用strong的问题，那么可变对象使用copy有什么问题呢？还是写代码来验证一下：</p>
+<h5 id="可变对象用copy"><a href="#可变对象用copy" class="headerlink" title="可变对象用copy"></a>可变对象用copy</h5><p>上面说了不可变对象使用strong的问题，那么可变对象使用copy有什么问题呢？还是写代码来验证一下：</p>
 <figure class="highlight objectivec"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">@property</span> (<span class="keyword">nonatomic</span>, <span class="keyword">copy</span>) <span class="built_in">NSMutableString</span> *mutString;</span><br></pre></td></tr></table></figure>
 
 <p>这里还是强调一下，既然属性类型是可变类型，说明我们期望再程序中能够改变mutString的值，否则直接使用NSString了。</p>
@@ -606,10 +581,8 @@
 <figure class="highlight objectivec"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 首先声明一个临时变量</span></span><br><span class="line"><span class="built_in">NSMutableString</span> *tempString = [<span class="built_in">NSMutableString</span> stringWithString:str];</span><br><span class="line"><span class="comment">// 将该临时变量copy，赋值给self.mutString</span></span><br><span class="line"><span class="keyword">self</span>.mutString = [tempString <span class="keyword">copy</span>];</span><br></pre></td></tr></table></figure>
 
 <p>注意，<strong>通过[tempString copy]得到的self.mutString是一个不可变对象</strong>，不可变对象自然没有appendString方法，这也是为何会崩溃的原因。</p>
-<p>####copy和mutableCopy</p>
-<p>另外常用来做对比的是copy和mutableCopy。copy和mutableCopy之间的差异主要和深拷贝和浅拷贝有关，先看一下深拷贝、浅拷贝的概念。</p>
-<p>#####深拷贝、浅拷贝</p>
-<p>所谓浅拷贝，在Objective-C中可以理解为引用计数加1，并没有申请新的内存区域，只是另外一个指针指向了该区域。深拷贝正好相反，深拷贝会申请新的内存区域，原内存区域的引用计数不变。看图来说明深拷贝和浅拷贝的区别。</p>
+<h4 id="copy和mutableCopy"><a href="#copy和mutableCopy" class="headerlink" title="copy和mutableCopy"></a>copy和mutableCopy</h4><p>另外常用来做对比的是copy和mutableCopy。copy和mutableCopy之间的差异主要和深拷贝和浅拷贝有关，先看一下深拷贝、浅拷贝的概念。</p>
+<h5 id="深拷贝、浅拷贝"><a href="#深拷贝、浅拷贝" class="headerlink" title="深拷贝、浅拷贝"></a>深拷贝、浅拷贝</h5><p>所谓浅拷贝，在Objective-C中可以理解为引用计数加1，并没有申请新的内存区域，只是另外一个指针指向了该区域。深拷贝正好相反，深拷贝会申请新的内存区域，原内存区域的引用计数不变。看图来说明深拷贝和浅拷贝的区别。</p>
 
 
 <p>首先A指向一块内存区域，现在设置B = A</p>
@@ -624,24 +597,21 @@
 
 
 <p>A和B指向的不是同一块内存区域，只是这两块内存区域中的内容是一样的，即为深拷贝。</p>
-<p>#####可变对象的copy、mutableCopy</p>
-<p>可变对象的copy和mutableCopy都是深拷贝。以可变对象NSMutableString和NSMutableArray为例，测试代码：</p>
+<h5 id="可变对象的copy、mutableCopy"><a href="#可变对象的copy、mutableCopy" class="headerlink" title="可变对象的copy、mutableCopy"></a>可变对象的copy、mutableCopy</h5><p>可变对象的copy和mutableCopy都是深拷贝。以可变对象NSMutableString和NSMutableArray为例，测试代码：</p>
 <figure class="highlight objectivec"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">- (<span class="keyword">void</span>)testMutableCopy</span><br><span class="line">&#123;</span><br><span class="line">    <span class="built_in">NSMutableString</span> *str1 = [<span class="built_in">NSMutableString</span> stringWithString:<span class="string">@&quot;abc&quot;</span>];</span><br><span class="line">    <span class="built_in">NSString</span> *str2 = [str1 <span class="keyword">copy</span>];</span><br><span class="line">    <span class="built_in">NSMutableString</span> *str3 = [str1 mutableCopy];</span><br><span class="line">    <span class="built_in">NSLog</span>(<span class="string">@&quot;str1 = %p str2 = %p str3 = %p&quot;</span>,str1,str2,str3);</span><br><span class="line">    </span><br><span class="line">    <span class="built_in">NSMutableArray</span> *array1 = [<span class="built_in">NSMutableArray</span> arrayWithObjects:<span class="string">@&quot;a&quot;</span>,<span class="string">@&quot;b&quot;</span>, <span class="literal">nil</span>];</span><br><span class="line">    <span class="built_in">NSArray</span> *array2 = [array1 <span class="keyword">copy</span>];</span><br><span class="line">    <span class="built_in">NSMutableArray</span> *array3 = [array1 mutableCopy];</span><br><span class="line">    <span class="built_in">NSLog</span>(<span class="string">@&quot;array1 = %p array2 = %p array3 = %p&quot;</span>,array1,array2,array3);</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 
 <p>输出结果：</p>
 <figure class="highlight objectivec"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">2018</span><span class="number">-12</span><span class="number">-07</span> <span class="number">13</span>:<span class="number">01</span>:<span class="number">27.525064</span>+<span class="number">0800</span> TestClock[<span class="number">9357</span>:<span class="number">143436</span>] str1 = <span class="number">0x60000086d8f0</span> str2 = <span class="number">0xc8c1a5736a50d5fe</span> str3 = <span class="number">0x60000086d9b0</span></span><br><span class="line"><span class="number">2018</span><span class="number">-12</span><span class="number">-07</span> <span class="number">13</span>:<span class="number">01</span>:<span class="number">27.525198</span>+<span class="number">0800</span> TestClock[<span class="number">9357</span>:<span class="number">143436</span>] array1 = <span class="number">0x600000868000</span> array2 = <span class="number">0x60000067e5a0</span> array3 = <span class="number">0x600000868030</span></span><br></pre></td></tr></table></figure>
 
 <p>可以看到，只要是可变对象，无论是集合对象，还是非集合对象，copy和mutableCopy都是深拷贝。</p>
-<p>#####不可变对象的copy、mutableCopy</p>
-<p>不可变对象的copy是浅拷贝，mutableCopy是深拷贝。以NSString和NSArray为例，测试代码如下：</p>
+<h5 id="不可变对象的copy、mutableCopy"><a href="#不可变对象的copy、mutableCopy" class="headerlink" title="不可变对象的copy、mutableCopy"></a>不可变对象的copy、mutableCopy</h5><p>不可变对象的copy是浅拷贝，mutableCopy是深拷贝。以NSString和NSArray为例，测试代码如下：</p>
 <figure class="highlight objectivec"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">- (<span class="keyword">void</span>)testCopy</span><br><span class="line">&#123;</span><br><span class="line">    <span class="built_in">NSString</span> *str1 = <span class="string">@&quot;123&quot;</span>;</span><br><span class="line">    <span class="built_in">NSString</span> *str2 = [str1 <span class="keyword">copy</span>];</span><br><span class="line">    <span class="built_in">NSMutableString</span> *str3 = [str1 mutableCopy];</span><br><span class="line">    <span class="built_in">NSLog</span>(<span class="string">@&quot;str1 = %p str2 = %p str3 = %p&quot;</span>,str1,str2,str3);</span><br><span class="line">    </span><br><span class="line">    <span class="built_in">NSArray</span> *array1 = @[<span class="string">@&quot;1&quot;</span>,<span class="string">@&quot;2&quot;</span>];</span><br><span class="line">    <span class="built_in">NSArray</span> *array2 = [array1 <span class="keyword">copy</span>];</span><br><span class="line">    <span class="built_in">NSMutableArray</span> *array3 = [array1 mutableCopy];</span><br><span class="line">    <span class="built_in">NSLog</span>(<span class="string">@&quot;array1 = %p array2 = %p array3 = %p&quot;</span>,array1,array2,array3);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <p>输出结果：</p>
 <figure class="highlight objectivec"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">2018</span><span class="number">-12</span><span class="number">-07</span> <span class="number">13</span>:<span class="number">06</span>:<span class="number">29.439108</span>+<span class="number">0800</span> TestClock[<span class="number">9442</span>:<span class="number">147133</span>] str1 = <span class="number">0x1045612b0</span> str2 = <span class="number">0x1045612b0</span> str3 = <span class="number">0x6000017e4450</span></span><br><span class="line"><span class="number">2018</span><span class="number">-12</span><span class="number">-07</span> <span class="number">13</span>:<span class="number">06</span>:<span class="number">29.439236</span>+<span class="number">0800</span> TestClock[<span class="number">9442</span>:<span class="number">147133</span>] array1 = <span class="number">0x6000019f5c80</span> array2 = <span class="number">0x6000019f5c80</span> array3 = <span class="number">0x6000017e1170</span></span><br></pre></td></tr></table></figure>
 
 <p>可以看到，只要是不可变对象，无论是集合对象，还是非集合对象，copy都是浅拷贝，mutableCopy都是深拷贝。</p>
-<p>#####自定义对象如何支持copy方法</p>
-<p>项目开发中经常会有自定义对象的需求，那么自定义对象是否可以copy呢？如何支持copy？</p>
+<h5 id="自定义对象如何支持copy方法"><a href="#自定义对象如何支持copy方法" class="headerlink" title="自定义对象如何支持copy方法"></a>自定义对象如何支持copy方法</h5><p>项目开发中经常会有自定义对象的需求，那么自定义对象是否可以copy呢？如何支持copy？</p>
 <p>自定义对象可以支持copy方法，我们所需要做的是：自定义对象遵守NSCopying协议，且实现copyWithZone方法。NSCopying协议是系统提供的，直接使用即可。</p>
 <p>遵守NSCopying协议：</p>
 <figure class="highlight objectivec"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">@interface</span> <span class="title">Student</span> : <span class="title">NSObject</span> &lt;<span class="title">NSCopying</span>&gt;</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="built_in">NSString</span> *_sex;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">@property</span> (atomic, <span class="keyword">copy</span>) <span class="built_in">NSString</span> *name;</span><br><span class="line"></span><br><span class="line"><span class="keyword">@property</span> (<span class="keyword">nonatomic</span>, <span class="keyword">copy</span>) <span class="built_in">NSString</span> *sex;</span><br><span class="line"></span><br><span class="line"><span class="keyword">@property</span> (<span class="keyword">nonatomic</span>, <span class="keyword">assign</span>) <span class="keyword">int</span> age;</span><br><span class="line"></span><br><span class="line"><span class="keyword">@end</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
@@ -747,8 +717,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -812,6 +791,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#property%E4%BB%8B%E7%BB%8D"><span class="nav-number">1.</span> <span class="nav-text">@property介绍</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#property-%E6%9C%AC%E8%B4%A8"><span class="nav-number">2.</span> <span class="nav-text">@property 本质</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#setter%E6%96%B9%E6%B3%95"><span class="nav-number">2.1.</span> <span class="nav-text">setter方法</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#getter%E6%96%B9%E6%B3%95"><span class="nav-number">2.1.1.</span> <span class="nav-text">getter方法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%AE%9E%E4%BE%8B%E5%8F%98%E9%87%8F"><span class="nav-number">2.1.2.</span> <span class="nav-text">实例变量</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%87%AA%E5%8A%A8%E5%90%88%E6%88%90"><span class="nav-number">2.1.3.</span> <span class="nav-text">自动合成</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%8A%A8%E6%80%81%E5%90%88%E6%88%90"><span class="nav-number">2.1.4.</span> <span class="nav-text">动态合成</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%87%8D%E5%86%99setter%E3%80%81getter%E6%96%B9%E6%B3%95%E7%9A%84%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9"><span class="nav-number">2.1.5.</span> <span class="nav-text">重写setter、getter方法的注意事项</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%BF%AE%E6%94%B9%E5%AE%9E%E4%BE%8B%E5%8F%98%E9%87%8F%E7%9A%84%E5%90%8D%E7%A7%B0"><span class="nav-number">2.1.6.</span> <span class="nav-text">修改实例变量的名称</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#getter%E6%96%B9%E6%B3%95%E4%B8%AD%E4%B8%BA%E4%BD%95%E4%B8%8D%E8%83%BD%E7%94%A8self"><span class="nav-number">2.1.7.</span> <span class="nav-text">getter方法中为何不能用self.</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#property%E4%BF%AE%E9%A5%B0%E7%AC%A6"><span class="nav-number">3.</span> <span class="nav-text">@property修饰符</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%BF%AE%E9%A5%B0%E7%AC%A6%E7%A7%8D%E7%B1%BB"><span class="nav-number">3.0.1.</span> <span class="nav-text">修饰符种类</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%BB%98%E8%AE%A4%E4%BF%AE%E9%A5%B0%E7%AC%A6"><span class="nav-number">3.0.2.</span> <span class="nav-text">默认修饰符</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#atomic%E6%98%AF%E5%90%A6%E6%98%AF%E7%BA%BF%E7%A8%8B%E5%AE%89%E5%85%A8%E7%9A%84"><span class="nav-number">3.0.3.</span> <span class="nav-text">atomic是否是线程安全的</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#weak%E5%92%8Cassign%E5%8C%BA%E5%88%AB"><span class="nav-number">3.0.4.</span> <span class="nav-text">weak和assign区别</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%9F%BA%E6%9C%AC%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%E7%94%A8weak%E6%9D%A5%E4%BF%AE%E9%A5%B0"><span class="nav-number">3.0.4.1.</span> <span class="nav-text">基本数据类型用weak来修饰</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%AF%B9%E8%B1%A1%E4%BD%BF%E7%94%A8assign%E6%9D%A5%E4%BF%AE%E9%A5%B0"><span class="nav-number">3.0.4.2.</span> <span class="nav-text">对象使用assign来修饰</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%A0%86%E5%92%8C%E6%A0%88"><span class="nav-number">3.0.5.</span> <span class="nav-text">堆和栈</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%A0%88%E6%98%AF%E7%BA%BF%E7%A8%8B%E5%AE%89%E5%85%A8%E7%9A%84%E5%98%9B"><span class="nav-number">3.0.6.</span> <span class="nav-text">栈是线程安全的嘛</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E8%BF%9B%E7%A8%8B%E5%92%8C%E7%BA%BF%E7%A8%8B%E7%9A%84%E5%85%B3%E7%B3%BB"><span class="nav-number">3.0.6.1.</span> <span class="nav-text">进程和线程的关系</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E6%A0%88%E7%9A%84%E7%BA%BF%E7%A8%8B%E5%AE%89%E5%85%A8"><span class="nav-number">3.0.6.2.</span> <span class="nav-text">栈的线程安全</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#copy%E3%80%81strong%E3%80%81mutableCopy"><span class="nav-number">3.0.7.</span> <span class="nav-text">copy、strong、mutableCopy</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#copy%E5%92%8Cstrong"><span class="nav-number">3.0.7.1.</span> <span class="nav-text">copy和strong</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%8F%AF%E5%8F%98%E5%AF%B9%E8%B1%A1%E5%92%8C%E4%B8%8D%E5%8F%AF%E5%8F%98%E5%AF%B9%E8%B1%A1"><span class="nav-number">3.0.7.2.</span> <span class="nav-text">可变对象和不可变对象</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E4%B8%8D%E5%8F%AF%E5%8F%98%E5%AF%B9%E8%B1%A1%E7%94%A8strong"><span class="nav-number">3.0.7.3.</span> <span class="nav-text">不可变对象用strong</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%8F%AF%E5%8F%98%E5%AF%B9%E8%B1%A1%E7%94%A8copy"><span class="nav-number">3.0.7.4.</span> <span class="nav-text">可变对象用copy</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#copy%E5%92%8CmutableCopy"><span class="nav-number">3.0.8.</span> <span class="nav-text">copy和mutableCopy</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E6%B7%B1%E6%8B%B7%E8%B4%9D%E3%80%81%E6%B5%85%E6%8B%B7%E8%B4%9D"><span class="nav-number">3.0.8.1.</span> <span class="nav-text">深拷贝、浅拷贝</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%8F%AF%E5%8F%98%E5%AF%B9%E8%B1%A1%E7%9A%84copy%E3%80%81mutableCopy"><span class="nav-number">3.0.8.2.</span> <span class="nav-text">可变对象的copy、mutableCopy</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E4%B8%8D%E5%8F%AF%E5%8F%98%E5%AF%B9%E8%B1%A1%E7%9A%84copy%E3%80%81mutableCopy"><span class="nav-number">3.0.8.3.</span> <span class="nav-text">不可变对象的copy、mutableCopy</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E8%87%AA%E5%AE%9A%E4%B9%89%E5%AF%B9%E8%B1%A1%E5%A6%82%E4%BD%95%E6%94%AF%E6%8C%81copy%E6%96%B9%E6%B3%95"><span class="nav-number">3.0.8.4.</span> <span class="nav-text">自定义对象如何支持copy方法</span></a></li></ol></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
